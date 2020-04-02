@@ -1,1 +1,0 @@
-# sd-si-quadratic-equation
