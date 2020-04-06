@@ -1,34 +1,30 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Printer {
-    public void inputCoefficients(QuadraticEquation equation) {
+    private ArrayList<Double> coefficients = new ArrayList<>();
+
+    public ArrayList<Double> inputCoefficients() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input a = ");
-        equation.setCoefficientA(scanner.nextDouble());
-        if (equation.getCoefficientA() == 0) {
-            System.out.print("Equation is not quadratic");
-        } else {
-            System.out.print("b = ");
-            equation.setCoefficientB(scanner.nextDouble());
-            System.out.print("c = ");
-            equation.setCoefficientC(scanner.nextDouble());
-        }
+        coefficients.add(scanner.nextDouble());
+        System.out.print("b = ");
+        coefficients.add(scanner.nextDouble());
+        System.out.print("c = ");
+        coefficients.add(scanner.nextDouble());
         scanner.close();
+        return coefficients;
     }
 
-    public void outputEquation(QuadraticEquation equation) {
+    public void outputEquation() {
         System.out.println(
-                equation.getCoefficientA() + "x^2 + "
-                + equation.getCoefficientB() + "x + "
-                + equation.getCoefficientC() + " = 0"
+                coefficients.get(0) + "x^2 + "
+                + coefficients.get(1) + "x + "
+                + coefficients.get(2) + " = 0"
         );
     }
 
-    public void outputSolution(double firstRoot, double secondRoot) {
-        System.out.print("x1 = " + firstRoot + "; x2 = " + secondRoot);
-    }
-
-    public void outputSolution(double root) {
-        System.out.print("x = " + root);
+    public void outputSolution(String result) {
+        System.out.print(result);
     }
 }

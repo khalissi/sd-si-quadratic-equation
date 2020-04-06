@@ -1,44 +1,25 @@
+import java.util.ArrayList;
+
 public class QuadraticEquation {
     private double coefficientA;
     private double coefficientB;
     private double coefficientC;
 
-    public double getCoefficientA() {
-        return coefficientA;
+    public QuadraticEquation(ArrayList<Double> coefficients) {
+        coefficientA = coefficients.get(0);
+        coefficientB = coefficients.get(1);
+        coefficientC = coefficients.get(2);
     }
 
-    public void setCoefficientA(double coefficientA) {
-        this.coefficientA = coefficientA;
-    }
-
-    public double getCoefficientB() {
-        return coefficientB;
-    }
-
-    public void setCoefficientB(double coefficientB) {
-        this.coefficientB = coefficientB;
-    }
-
-    public double getCoefficientC() {
-        return coefficientC;
-    }
-
-    public void setCoefficientC(double coefficientC) {
-        this.coefficientC = coefficientC;
-    }
-
-    public void solveEquation() throws NegativeDiscriminantException {
-        Printer printer = new Printer();
-        printer.inputCoefficients(this);
+    public String solveEquation() throws NegativeDiscriminantException {
         if (coefficientA == 0) {
-            return;
+            return "Equation is not quadratic";
         } else {
-            printer.outputEquation(this);
             double discriminant = coefficientB * coefficientB - 4 * coefficientA * coefficientC;
             if (discriminant > 0)
-                printer.outputSolution(getFirstRoot(discriminant), getSecondRoot(discriminant));
+                return "x1 = "  + getFirstRoot(discriminant) + "; x2 = " + getSecondRoot(discriminant);
             else if (discriminant == 0)
-                printer.outputSolution(getSingleRoot());
+                return "x = " + getSingleRoot();
             else
                 throw new NegativeDiscriminantException("Discriminant is negative");
         }

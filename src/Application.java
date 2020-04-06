@@ -1,8 +1,10 @@
 public class Application {
     public static void main(String[] args) {
-        QuadraticEquation qe = new QuadraticEquation();
+        Printer printer = new Printer();
+        QuadraticEquation equation = new QuadraticEquation(printer.inputCoefficients());
+        printer.outputEquation();
         try {
-            qe.solveEquation();
+            printer.outputSolution(equation.solveEquation());
         } catch (NegativeDiscriminantException ex) {
             System.out.print(ex.getMessage());
         }
