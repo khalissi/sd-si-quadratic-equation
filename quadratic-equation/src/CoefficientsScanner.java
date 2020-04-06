@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class CoefficientsScanner {
 
-    public QuadraticEquation scanEquationCoefficients() throws InputMismatchException {
+    public List<Double> scanEquationCoefficients() throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
         List<Double> coefficients = new ArrayList<>();
         System.out.println("Please, enter coefficient 'a': ");
@@ -16,6 +16,6 @@ public class CoefficientsScanner {
         coefficients.add(scanner.nextDouble());
         scanner.close();
 
-        return new QuadraticEquation(coefficients.get(0), coefficients.get(1), coefficients.get(2));
+        return coefficients;
     }
 }
