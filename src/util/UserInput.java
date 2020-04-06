@@ -4,36 +4,18 @@ import java.util.Scanner;
 
 public class UserInput {
 
-    public static int inputInt(String msg) {
+    public static double inputDouble(String msg, boolean trueNull) {
         Scanner scanner = new Scanner(System.in);
 
-        int value;
+        double value;
 
         while (true) {
             System.out.println(msg);
-            if (scanner.hasNextInt()) {
-                value = scanner.nextInt();
-                break;
-            } else {
-                scanner.nextLine();
-            }
-        }
-        return value;
-    }
-
-    public static int inputIntNotNull(String msg) {
-        Scanner scanner = new Scanner(System.in);
-
-        int value;
-
-        while (true) {
-            System.out.println(msg);
-            if (scanner.hasNextInt()) {
-                value = scanner.nextInt();
-                if (value != 0){
+            if (scanner.hasNextDouble()) {
+                value = scanner.nextDouble();
+                if (trueNull || value != 0) {
                     break;
-                }
-                else{
+                } else {
                     scanner.nextLine();
                 }
             } else {
