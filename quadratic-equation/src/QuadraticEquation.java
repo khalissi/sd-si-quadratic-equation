@@ -35,6 +35,6 @@ public class QuadraticEquation {
     }
 
     private double countDiscriminant() {
-        return (Math.pow(B, 2) - 4 * A * C);
+        return Math.pow(B, 2) - 4 * A * C;
     }
 }
