@@ -11,7 +11,7 @@ public class QuadraticEquation {
         coefficientC = coefficients.get(2);
     }
 
-    public String solveEquation() throws NegativeDiscriminantException {
+    public String getSolution() throws NegativeDiscriminantException {
         if (coefficientA == 0) {
             return "Equation is not quadratic";
         } else {
