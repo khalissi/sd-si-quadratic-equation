@@ -4,6 +4,7 @@ import by.nc.khoroneko.entity.QuadraticEquation;
 import by.nc.khoroneko.exception.NegativeDiscriminantException;
 import by.nc.khoroneko.exception.ServiceException;
 import by.nc.khoroneko.service.QuadraticEquationSolver;
+import by.nc.khoroneko.validation.QuadraticEquationValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,13 @@ public class QuadraticEquationThroughDiscriminantSolverImpl implements Quadratic
     @Override
     public List<Double> solve(QuadraticEquation quadraticEquation) throws NegativeDiscriminantException, ServiceException {
         if (quadraticEquation == null) {
-            throw new ServiceException("Invalid quadratic exception");
+            throw new ServiceException("Invalid quadratic object");
         }
-        return calculateRoots(quadraticEquation, calculateDiscriminant(quadraticEquation));
+        if (new QuadraticEquationValidator().isValid(quadraticEquation)) {
+            return calculateRoots(quadraticEquation, calculateDiscriminant(quadraticEquation));
+        } else {
+            throw new ServiceException("Invalid quadratic coefficients");
+        }
     }
 
     private double calculateDiscriminant(QuadraticEquation quadraticEquation) throws NegativeDiscriminantException {
